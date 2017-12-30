@@ -9,11 +9,13 @@ from six.moves import cPickle
 from utils import TextLoader
 from model import Model
 
+import sys
+
 
 def main():
     parser = argparse.ArgumentParser(
                         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('--data_dir', type=str, default='data/tinyshakespeare',
+    parser.add_argument('--data_dir', type=str, default='data/rapstar',
                         help='data directory containing input.txt')
     parser.add_argument('--save_dir', type=str, default='save',
                         help='directory to store checkpointed models')
