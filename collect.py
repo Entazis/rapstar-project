@@ -29,7 +29,7 @@ for url in urls:
 
     soup = BeautifulSoup(page.text, 'html.parser')
     lyrics = soup.find('div', attrs={'class':'lyrics-plain-text'}).text
-    if lyrics != '\nKeressük a dalszöveget!\n' and lyrics != None:
+    if lyrics != '\nKeressük a dalszöveget!\n' and lyrics is not None:
         file_output = open('output.txt', 'a', encoding="utf-16")
         file_output.write(lyrics)
         file_output.close()
