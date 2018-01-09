@@ -10,7 +10,9 @@ from utils import TextLoader
 from model import Model
 
 import sys
+import time
 
+start_time = time.time()
 
 def main():
     parser = argparse.ArgumentParser(
@@ -55,7 +57,8 @@ def main():
                         """)
     args = parser.parse_args()
     train(args)
-
+    elapsed_time = time.time() - start_time
+    print("training time was: ", elapsed_time)
 
 def train(args):
     data_loader = TextLoader(args.data_dir, args.batch_size, args.seq_length)

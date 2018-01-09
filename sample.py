@@ -9,13 +9,16 @@ from model import Model
 
 from six import text_type
 
+import time
+
+start_time = time.time()
 
 def main():
     parser = argparse.ArgumentParser(
                        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('--save_dir', type=str, default='save',
                         help='model directory to store checkpointed models')
-    parser.add_argument('-n', type=int, default=300,
+    parser.add_argument('-n', type=int, default=1000,
                         help='number of characters to sample')
     parser.add_argument('--prime', type=text_type, default=u' ',
                         help='prime text')
@@ -25,7 +28,8 @@ def main():
 
     args = parser.parse_args()
     sample(args)
-
+    elapsed_time = time.time() - start_time
+    print("sampling time was: ", elapsed_time)
 
 def sample(args):
     with open(os.path.join(args.save_dir, 'config.pkl'), 'rb') as f:
